@@ -291,6 +291,53 @@ alert(name+" добавлен в корзину");
 
 function showCart(){
 
+let box=document.getElementById("cartWindow");
+
+let items=document.getElementById("cartItems");
+
+let totalBox=document.getElementById("cartTotal");
+
+
+items.innerHTML="";
+
+let total=0;
+
+
+cart.forEach((item,index)=>{
+
+
+items.innerHTML +=
+
+`
+<div style="margin-bottom:15px">
+
+${item.name} — ${item.price} ₽
+
+<br>
+
+<button onclick="removeItem(${index})">
+❌ Удалить
+</button>
+
+</div>
+`;
+
+
+total+=item.price;
+
+
+});
+
+
+totalBox.innerHTML=
+"Итого: "+total+" ₽";
+
+
+box.style.display="block";
+
+
+}
+
 
 if(cart.length===0){
 
