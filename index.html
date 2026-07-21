@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Абсолютно Чёрный</title>
+
 
 <style>
 
@@ -15,36 +18,54 @@ color:white;
 font-family:Arial,sans-serif;
 }
 
+
 .header{
 text-align:center;
 padding:25px;
 }
 
-.header h1{
-font-size:28px;
+
+h1{
 margin:0;
 }
+
 
 .gray{
 color:#aaa;
 }
 
+
 .container{
 padding:15px;
 }
 
+
 .card{
+
 background:#1e1e1e;
 border-radius:18px;
-padding:18px;
-margin-bottom:15px;
+padding:15px;
+margin-bottom:20px;
+
 }
 
+
+.card img{
+
+width:100%;
+border-radius:15px;
+
+}
+
+
 .price{
+
 color:#d7a86e;
 font-size:20px;
 font-weight:bold;
+
 }
+
 
 button{
 
@@ -56,22 +77,48 @@ border:none;
 border-radius:14px;
 
 background:#d7a86e;
+
 font-size:16px;
 
 }
 
+
 .cart{
 
 position:fixed;
+
 bottom:15px;
 left:15px;
 right:15px;
 
 }
 
+
+#cartWindow{
+
+display:none;
+
+position:fixed;
+
+top:10%;
+left:5%;
+right:5%;
+
+background:#222;
+
+padding:20px;
+
+border-radius:20px;
+
+z-index:100;
+
+}
+
+
 </style>
 
 </head>
+
 
 
 <body>
@@ -91,64 +138,51 @@ right:15px;
 
 <div class="container">
 
+
 <h2>☕ Кофе</h2>
 
-<div id="cartWindow" style="
-display:none;
-position:fixed;
-top:10%;
-left:5%;
-right:5%;
-background:#222;
-padding:20px;
-border-radius:20px;
-z-index:10;
-">
 
-<h2>🛒 Корзина</h2>
+<div class="card">
 
-<div id="cartItems"></div>
+<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600">
 
-<h3 id="cartTotal"></h3>
-
-<button onclick="closeCart()">
-Закрыть
-</button>
-
-<button onclick="order()">
-✅ Оформить заказ
-</button>
-
-</div>
-
-<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600" width="100%" style="border-radius:15px">
 
 <h2>Капучино</h2>
 
 <p>Нежный кофе с молочной пеной</p>
 
-<div class="price">269 ₽</div>
+<div class="price">
+269 ₽
+</div>
+
 
 <button onclick="add('Капучино',269)">
 ＋ Добавить
 </button>
 
+
 </div>
+
 
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600" width="100%" style="border-radius:15px">
+<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600">
+
 
 <h2>Американо</h2>
 
-<p>Классический вкус свежего кофе</p>
+<p>Классический кофе</p>
 
-<div class="price">199 ₽</div>
+<div class="price">
+199 ₽
+</div>
+
 
 <button onclick="add('Американо',199)">
 ＋ Добавить
 </button>
+
 
 </div>
 
@@ -157,19 +191,25 @@ z-index:10;
 <h2>🥐 Выпечка</h2>
 
 
+
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600" width="100%" style="border-radius:15px">
+<img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600">
+
 
 <h2>Брецель с кунжутом</h2>
 
 <p>Свежая выпечка</p>
 
-<div class="price">219 ₽</div>
+<div class="price">
+219 ₽
+</div>
+
 
 <button onclick="add('Брецель с кунжутом',219)">
 ＋ Добавить
 </button>
+
 
 </div>
 
@@ -178,91 +218,84 @@ z-index:10;
 <h2>🍋 Лимонады</h2>
 
 
+
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600" width="100%" style="border-radius:15px">
+<img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600">
+
 
 <h2>Голубика-базилик</h2>
 
 <p>Авторский лимонад</p>
 
-<div class="price">350 ₽</div>
-
-<button onclick="add('Лимонад голубика-базилик',350)">
-＋ Добавить
-</button>
-
-</div>
-
-
-</div>
-
-<h2>☕ Капучино</h2>
-
-<p>300 мл</p>
-
-<div class="price">
-269 ₽
-</div>
-
-<button onclick="add('Капучино',269)">
-Добавить
-</button>
-
-</div>
-
-
-
-
-<div class="card">
-
-<h2>🥐 Брецель с кунжутом</h2>
-
-<p>Свежая выпечка</p>
-
-<div class="price">
-219 ₽
-</div>
-
-<button onclick="add('Брецель',219)">
-Добавить
-</button>
-
-</div>
-
-
-
-
-
-<div class="card">
-
-<h2>🍋 Голубика-базилик</h2>
-
-<p>Авторский лимонад</p>
 
 <div class="price">
 350 ₽
 </div>
 
-<button onclick="add('Лимонад',350)">
-Добавить
+
+<button onclick="add('Лимонад голубика-базилик',350)">
+＋ Добавить
 </button>
 
+
+</div>
+
+
+
 </div>
 
 
 
+
+
+<div id="cartWindow">
+
+
+<h2>
+🛒 Корзина
+</h2>
+
+
+<div id="cartItems">
+
 </div>
+
+
+<h3 id="cartTotal">
+
+</h3>
+
+
+
+<button onclick="closeCart()">
+Закрыть
+</button>
+
+
+<button onclick="order()">
+✅ Оформить заказ
+</button>
+
+
+</div>
+
+
 
 
 
 <div class="cart">
 
 <button onclick="showCart()" id="cartButton">
+
 🛒 Корзина пустая
+
 </button>
 
 </div>
+
+
+
 
 
 <script>
@@ -272,54 +305,99 @@ let cart=[];
 
 
 
+
 function add(name,price){
+
 
 cart.push({
 
 name:name,
+
 price:price
 
 });
 
 
-alert(name+" добавлен в корзину");
+updateCart();
+
 
 }
 
 
 
 
+function updateCart(){
+
+
+let total=0;
+
+
+cart.forEach(item=>{
+
+total+=item.price;
+
+});
+
+
+let btn=document.getElementById("cartButton");
+
+
+if(cart.length===0){
+
+btn.innerHTML="🛒 Корзина пустая";
+
+}
+
+else{
+
+
+btn.innerHTML=
+"🛒 "+cart.length+" товар(а) • "+total+" ₽";
+
+
+}
+
+
+}
+
+
+
+
+
 function showCart(){
 
-let box=document.getElementById("cartWindow");
+
+let windowCart=document.getElementById("cartWindow");
 
 let items=document.getElementById("cartItems");
-
-let totalBox=document.getElementById("cartTotal");
 
 
 items.innerHTML="";
 
+
 let total=0;
+
 
 
 cart.forEach((item,index)=>{
 
 
-items.innerHTML +=
+items.innerHTML+=`
 
-`
-<div style="margin-bottom:15px">
+<p>
 
 ${item.name} — ${item.price} ₽
 
 <br>
 
 <button onclick="removeItem(${index})">
+
 ❌ Удалить
+
 </button>
 
-</div>
+</p>
+
 `;
 
 
@@ -329,69 +407,52 @@ total+=item.price;
 });
 
 
-totalBox.innerHTML=
+
+document.getElementById("cartTotal").innerHTML=
+
 "Итого: "+total+" ₽";
 
 
-box.style.display="block";
+
+windowCart.style.display="block";
 
 
 }
 
 
-if(cart.length===0){
-
-alert("Корзина пустая");
-
-return;
-
-}
 
 
-let text="🛒 Ваш заказ:\n\n";
-
-let total=0;
-
-
-
-cart.forEach(item=>{
-
-
-text += item.name+" — "+item.price+" ₽\n";
-
-
-total += item.price;
-
-
-});
-
-
-
-text += "\nИтого: "+total+" ₽";
-
-
-
-alert(text);
-
-
-
-}
 
 function removeItem(index){
 
+
 cart.splice(index,1);
+
 
 updateCart();
 
+
 showCart();
 
+
 }
+
+
+
+
 
 function closeCart(){
 
+
 document.getElementById("cartWindow").style.display="none";
 
+
 }
+
+
+
+
+
 function order(){
 
 
@@ -407,28 +468,19 @@ return;
 
 let text="Ваш заказ:\n\n";
 
-let total=0;
-
-
 
 cart.forEach(item=>{
 
 
-text += item.name+" — "+item.price+" ₽\n";
-
-
-total+=item.price;
+text+=item.name+" — "+item.price+" ₽\n";
 
 
 });
 
 
 
-text+="\nИтого: "+total+" ₽";
+alert(text);
 
-
-
-alert(text+"\n\nСпасибо за заказ ☕");
 
 }
 
