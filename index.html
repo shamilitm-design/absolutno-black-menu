@@ -139,7 +139,32 @@ function add(item){
 }
 
 
-function showCart(){
+function showCart(){function order(){
+
+let text="Новый заказ ☕%0A%0A";
+
+let total=0;
+
+for(let item in cart){
+
+let count=cart[item];
+
+text += item+" × "+count+"%0A";
+
+total += prices[item]*count;
+
+}
+
+text += "%0AИтого: "+total+" ₽";
+
+
+let phone="@Ismailov_onelevel";
+
+window.open(
+"https://t.me/"+phone+"?text="+text
+);
+
+}
 
 let text="🛒 Ваш заказ:\n\n";
 let total=0;
