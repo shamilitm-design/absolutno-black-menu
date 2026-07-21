@@ -3,51 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Абсолютно Чёрный</title>
 
 <style>
 body {
-    margin:0;
+    margin: 0;
+    background: #111;
+    color: white;
     font-family: Arial, sans-serif;
-    background:#111;
-    color:white;
 }
 
-.header {
-    padding:25px;
-    text-align:center;
+header {
+    text-align: center;
+    padding: 25px;
 }
 
 h1 {
-    font-size:28px;
+    margin: 0;
+    font-size: 28px;
 }
 
-.menu {
-    padding:15px;
+.subtitle {
+    color: #aaa;
+}
+
+.container {
+    padding: 15px;
 }
 
 .card {
-    background:#1c1c1c;
-    border-radius:20px;
-    padding:18px;
-    margin-bottom:15px;
+    background: #1d1d1d;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 15px;
 }
 
 .price {
-    color:#d4a373;
-    font-size:20px;
-    font-weight:bold;
+    color: #d7a86e;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 button {
-    width:100%;
-    background:#d4a373;
-    border:none;
-    padding:15px;
-    border-radius:15px;
-    font-size:18px;
-    margin-top:10px;
+    width: 100%;
+    margin-top: 12px;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: #d7a86e;
+    font-size: 16px;
+}
+
+.cart {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
 }
 </style>
 
@@ -55,72 +66,72 @@ button {
 
 <body>
 
-<div class="header">
-
+<header>
 <h1>☕ Абсолютно Чёрный</h1>
-
-<p>Кофе • Выпечка • Напитки</p>
-
-</div>
+<p class="subtitle">Кофе • Выпечка • Напитки</p>
+</header>
 
 
-<div class="menu">
-
+<div class="container">
 
 <div class="card">
-
 <h2>☕ Капучино</h2>
-
 <p>300 мл</p>
-
-<div class="price">
-269 ₽
-</div>
-
-<button>
+<div class="price">269 ₽</div>
+<button onclick="add('Капучино')">
 Добавить
 </button>
-
 </div>
-
 
 
 <div class="card">
-
 <h2>🥐 Брецель с кунжутом</h2>
-
 <p>Свежая выпечка</p>
-
-<div class="price">
-219 ₽
-</div>
-
-<button>
+<div class="price">219 ₽</div>
+<button onclick="add('Брецель')">
 Добавить
 </button>
-
 </div>
-
 
 
 <div class="card">
-
 <h2>🍋 Лимонад голубика-базилик</h2>
-
 <p>Авторский напиток</p>
-
-<div class="price">
-350 ₽
-</div>
-
-<button>
+<div class="price">350 ₽</div>
+<button onclick="add('Лимонад')">
 Добавить
 </button>
+</div>
 
 </div>
 
 
+<div class="cart">
+<button onclick="showCart()">
+🛒 Корзина
+</button>
 </div>
+
+
+<script>
+
+let cart=[];
+
+function add(item){
+cart.push(item);
+alert(item+" добавлен");
+}
+
+function showCart(){
+if(cart.length===0){
+alert("Корзина пустая");
+}
+else{
+alert("Ваш заказ:\n\n"+cart.join("\n"));
+}
+}
+
+</script>
 
 </body>
 </html>
