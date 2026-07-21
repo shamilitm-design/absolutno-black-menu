@@ -93,7 +93,33 @@ right:15px;
 
 <h2>☕ Кофе</h2>
 
-<div class="card">
+<div id="cartWindow" style="
+display:none;
+position:fixed;
+top:10%;
+left:5%;
+right:5%;
+background:#222;
+padding:20px;
+border-radius:20px;
+z-index:10;
+">
+
+<h2>🛒 Корзина</h2>
+
+<div id="cartItems"></div>
+
+<h3 id="cartTotal"></h3>
+
+<button onclick="closeCart()">
+Закрыть
+</button>
+
+<button onclick="order()">
+✅ Оформить заказ
+</button>
+
+</div>
 
 <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600" width="100%" style="border-radius:15px">
 
