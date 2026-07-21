@@ -377,9 +377,21 @@ alert(text);
 
 }
 
+function removeItem(index){
 
+cart.splice(index,1);
 
+updateCart();
 
+showCart();
+
+}
+
+function closeCart(){
+
+document.getElementById("cartWindow").style.display="none";
+
+}
 function order(){
 
 
