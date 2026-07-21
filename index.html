@@ -117,7 +117,7 @@ button {
 </div>
 
 
-<script>
+<script><script>
 
 let cart = {};
 
@@ -127,64 +127,84 @@ const prices = {
     "Лимонад": 350
 };
 
+
 function add(item){
 
     if(cart[item]){
-        cart[item]++;
+        cart[item] = cart[item] + 1;
     } else {
-        cart[item]=1;
+        cart[item] = 1;
     }
 
-    alert(item + " добавлен в корзину");
+    alert(item + " добавлен");
 }
 
 
+function showCart(){
+
+    let text = "🛒 Корзина:\n\n";
+    let total = 0;
 
 
-text += "%0AИтого: "+total+" ₽";
+    for(let item in cart){
+
+        let count = cart[item];
+        let sum = prices[item] * count;
+
+        text += item + " × " + count + " = " + sum + " ₽\n";
+
+        total += sum;
+    }
 
 
-let phone="@Ismailov_onelevel";
+    if(total === 0){
 
-window.open(
-"https://t.me/"+phone+"?text="+text
-);
+        alert("Корзина пустая");
 
-}
+    } else {
 
-let text="🛒 Ваш заказ:\n\n";
-let total=0;
+        text += "\nИтого: " + total + " ₽";
 
-for(let item in cart){
+        alert(text);
 
-let count=cart[item];
-let sum=prices[item]*count;
-
-text += item+" × "+count+" = "+sum+" ₽\n";
-
-total+=sum;
-
-}
-
-
-if(total===0){
-
-alert("Корзина пустая");
+    }
 
 }
 
-else{
 
-text += "\nИтого: "+total+" ₽";
+function order(){
 
-text += "\n\nДля оформления заказа напишите нам в Telegram";
+    if(Object.keys(cart).length === 0){
 
-alert(text);
+        alert("Корзина пустая");
+        return;
+
+    }
+
+
+    let text = "Новый заказ ☕\n\n";
+    let total = 0;
+
+
+    for(let item in cart){
+
+        let count = cart[item];
+
+        text += item + " × " + count + "\n";
+
+        total += prices[item] * count;
+
+    }
+
+
+    text += "\nИтого: " + total + " ₽";
+
+
+    alert(text);
 
 }
 
-}
-
+</script>
 </script>
 
 </body>
