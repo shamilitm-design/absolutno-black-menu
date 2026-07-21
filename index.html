@@ -115,20 +115,59 @@ button {
 
 <script>
 
-let cart=[];
+let cart = {};
+
+const prices = {
+    "Капучино": 269,
+    "Брецель": 219,
+    "Лимонад": 350
+};
 
 function add(item){
-cart.push(item);
-alert(item+" добавлен");
+
+    if(cart[item]){
+        cart[item]++;
+    } else {
+        cart[item]=1;
+    }
+
+    alert(item + " добавлен в корзину");
 }
 
+
 function showCart(){
-if(cart.length===0){
+
+let text="🛒 Ваш заказ:\n\n";
+let total=0;
+
+for(let item in cart){
+
+let count=cart[item];
+let sum=prices[item]*count;
+
+text += item+" × "+count+" = "+sum+" ₽\n";
+
+total+=sum;
+
+}
+
+
+if(total===0){
+
 alert("Корзина пустая");
+
 }
+
 else{
-alert("Ваш заказ:\n\n"+cart.join("\n"));
+
+text += "\nИтого: "+total+" ₽";
+
+text += "\n\nДля оформления заказа напишите нам в Telegram";
+
+alert(text);
+
 }
+
 }
 
 </script>
