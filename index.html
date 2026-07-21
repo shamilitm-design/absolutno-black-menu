@@ -3,209 +3,286 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Абсолютно Чёрный</title>
 
 <style>
-body {
-    margin: 0;
-    background: #111;
-    color: white;
-    font-family: Arial, sans-serif;
+
+body{
+margin:0;
+background:#111;
+color:white;
+font-family:Arial,sans-serif;
 }
 
-header {
-    text-align: center;
-    padding: 25px;
+.header{
+text-align:center;
+padding:25px;
 }
 
-h1 {
-    margin: 0;
-    font-size: 28px;
+.header h1{
+font-size:28px;
+margin:0;
 }
 
-.subtitle {
-    color: #aaa;
+.gray{
+color:#aaa;
 }
 
-.container {
-    padding: 15px;
+.container{
+padding:15px;
 }
 
-.card {
-    background: #1d1d1d;
-    border-radius: 18px;
-    padding: 18px;
-    margin-bottom: 15px;
+.card{
+background:#1e1e1e;
+border-radius:18px;
+padding:18px;
+margin-bottom:15px;
 }
 
-.price {
-    color: #d7a86e;
-    font-size: 20px;
-    font-weight: bold;
+.price{
+color:#d7a86e;
+font-size:20px;
+font-weight:bold;
 }
 
-button {
-    width: 100%;
-    margin-top: 12px;
-    padding: 14px;
-    border: none;
-    border-radius: 14px;
-    background: #d7a86e;
-    font-size: 16px;
+button{
+
+width:100%;
+padding:14px;
+margin-top:10px;
+
+border:none;
+border-radius:14px;
+
+background:#d7a86e;
+font-size:16px;
+
 }
 
-.cart {
-    position: fixed;
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
+.cart{
+
+position:fixed;
+bottom:15px;
+left:15px;
+right:15px;
+
 }
+
 </style>
 
 </head>
 
+
 <body>
 
-<header>
+
+<div class="header">
+
 <h1>☕ Абсолютно Чёрный</h1>
-<p class="subtitle">Кофе • Выпечка • Напитки</p>
-</header>
+
+<p class="gray">
+Кофе • Выпечка • Напитки
+</p>
+
+</div>
+
 
 
 <div class="container">
 
+
+
 <div class="card">
+
 <h2>☕ Капучино</h2>
+
 <p>300 мл</p>
-<div class="price">269 ₽</div>
-<button onclick="add('Капучино')">
+
+<div class="price">
+269 ₽
+</div>
+
+<button onclick="add('Капучино',269)">
 Добавить
 </button>
+
 </div>
 
 
+
+
 <div class="card">
+
 <h2>🥐 Брецель с кунжутом</h2>
+
 <p>Свежая выпечка</p>
-<div class="price">219 ₽</div>
-<button onclick="add('Брецель')">
+
+<div class="price">
+219 ₽
+</div>
+
+<button onclick="add('Брецель',219)">
 Добавить
 </button>
+
 </div>
+
+
+
 
 
 <div class="card">
-<h2>🍋 Лимонад голубика-базилик</h2>
-<p>Авторский напиток</p>
-<div class="price">350 ₽</div>
-<button onclick="add('Лимонад')">
-Добавить
-</button>
+
+<h2>🍋 Голубика-базилик</h2>
+
+<p>Авторский лимонад</p>
+
+<div class="price">
+350 ₽
 </div>
 
+<button onclick="add('Лимонад',350)">
+Добавить
+</button>
+
 </div>
+
+
+
+</div>
+
 
 
 <div class="cart">
-<<button onclick="showCart()">
+
+<button onclick="showCart()">
 🛒 Корзина
 </button>
+
 
 <button onclick="order()">
 ✅ Оформить заказ
 </button>
+
 </div>
 
 
-<script><script>
 
-let cart = {};
-
-const prices = {
-    "Капучино": 269,
-    "Брецель": 219,
-    "Лимонад": 350
-};
+<script>
 
 
-function add(item){
+let cart=[];
 
-    if(cart[item]){
-        cart[item] = cart[item] + 1;
-    } else {
-        cart[item] = 1;
-    }
 
-    alert(item + " добавлен");
+
+function add(name,price){
+
+cart.push({
+
+name:name,
+price:price
+
+});
+
+
+alert(name+" добавлен в корзину");
+
 }
+
+
 
 
 function showCart(){
 
-    let text = "🛒 Корзина:\n\n";
-    let total = 0;
 
+if(cart.length===0){
 
-    for(let item in cart){
+alert("Корзина пустая");
 
-        let count = cart[item];
-        let sum = prices[item] * count;
-
-        text += item + " × " + count + " = " + sum + " ₽\n";
-
-        total += sum;
-    }
-
-
-    if(total === 0){
-
-        alert("Корзина пустая");
-
-    } else {
-
-        text += "\nИтого: " + total + " ₽";
-
-        alert(text);
-
-    }
+return;
 
 }
+
+
+let text="🛒 Ваш заказ:\n\n";
+
+let total=0;
+
+
+
+cart.forEach(item=>{
+
+
+text += item.name+" — "+item.price+" ₽\n";
+
+
+total += item.price;
+
+
+});
+
+
+
+text += "\nИтого: "+total+" ₽";
+
+
+
+alert(text);
+
+
+
+}
+
+
 
 
 function order(){
 
-    if(Object.keys(cart).length === 0){
 
-        alert("Корзина пустая");
-        return;
+if(cart.length===0){
 
-    }
+alert("Корзина пустая");
 
-
-    let text = "Новый заказ ☕\n\n";
-    let total = 0;
-
-
-    for(let item in cart){
-
-        let count = cart[item];
-
-        text += item + " × " + count + "\n";
-
-        total += prices[item] * count;
-
-    }
-
-
-    text += "\nИтого: " + total + " ₽";
-
-
-    alert(text);
+return;
 
 }
 
-</script>
+
+
+let text="Ваш заказ:\n\n";
+
+let total=0;
+
+
+
+cart.forEach(item=>{
+
+
+text += item.name+" — "+item.price+" ₽\n";
+
+
+total+=item.price;
+
+
+});
+
+
+
+text+="\nИтого: "+total+" ₽";
+
+
+
+alert(text+"\n\nСпасибо за заказ ☕");
+
+}
+
+
+
 </script>
 
+
+
 </body>
+
 </html>
